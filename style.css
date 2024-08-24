@@ -1,0 +1,216 @@
+body.light-theme {
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+body.dark-theme {
+    background-color: #121212;
+    color: #f0f0f0;
+}
+
+.container {
+    max-width: 700px;
+    margin: 50px auto;
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+    color: #333;
+    transition: box-shadow 0.3s ease, background-color 0.5s ease;
+}
+
+body.dark-theme .container {
+    color: #f0f0f0;
+    background-color: #1e1e1e;
+    box-shadow: 0px 4px 15px rgba(255, 255, 255, 0.1);
+}
+
+h1 {
+    font-size: 32px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: 700;
+}
+
+p.intro {
+    text-align: justify;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.form-group {
+    margin-bottom: 0;
+}
+
+.form-group label {
+    font-weight: 600;
+    padding-left: 4px;
+}
+
+.form-group input {
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    width: 100%;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+body.dark-theme .form-group input {
+    background-color: #333;
+    border-color: #444;
+    color: #f0f0f0;
+}
+
+.btn-primary {
+    background-image: linear-gradient(to right, #ff512f, #dd2476);
+    border: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    font-weight: 600;
+    width: 100%;
+    border-radius: 8px;
+    margin-top: 15px;
+    transition: background-image 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-image: linear-gradient(to right, #ff7e5f, #feb47b);
+    box-shadow: 0 4px 15px rgba(255, 126, 95, 0.5);
+}
+
+body.dark-theme .btn-primary:hover {
+    background-image: linear-gradient(to right, #ee3000, #d737ff);
+    box-shadow: 0 4px 15px rgba(255, 126, 95, 0.5);
+}
+
+.result-container {
+    margin-top: 20px;
+    position: relative;
+}
+
+.result {
+    padding: 15px;
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    white-space: pre-wrap;
+    font-size: 16px;
+    line-height: 1.7;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease, background-color 0.5s ease, border-color 0.5s ease;
+    overflow: auto;
+    cursor: pointer;
+    color: inherit;
+}
+
+.result:focus-visible {
+    border-color: #007bff;
+}
+
+body.dark-theme .result {
+    background-color: #2e2e2e;
+    border-color: #444;
+    color: #f0f0f0;
+}
+
+.result.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.copy-button {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 4px 10px;
+    border-radius: 4px;
+    opacity: 0;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.copy-button.show {
+    opacity: 0.6;
+}
+
+.copy-button:hover {
+    opacity: 1;
+    background-color: #0056b3;
+}
+
+.error-message,
+.success-message {
+    font-size: 14px;
+    font-weight: 600;
+    color: #c52f3edd;
+    background-color: #ffc2c2ae;
+    padding: 12px;
+    margin-top: 10px;
+    border: 1px solid #dc3545;
+    border-radius: 8px;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.success-message.success {
+    color: #25973f;
+    background-color: #c3e6cbc7;
+    border-color: #28a745;
+}
+
+.success-message.success::before {
+    content: "✓ ";
+    color: #25973f;
+}
+
+.error-message.show,
+.success-message.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.spinner-border {
+    display: none;
+}
+
+.spinner-border.show {
+    display: inline-block;
+    margin-left: calc(50% - 1rem);
+}
+
+.theme-toggle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: transparent;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.theme-toggle:hover {
+    transform: rotate(20deg);
+}
+
+.toast {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1050;
+    min-width: 200px;
+    opacity: 0;
+    transform: translateY(100px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translateY(0);
+}

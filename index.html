@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中文 Lorem Ipsum 生成器</title>
+    <meta name="description" content="这个工具可以生成更接近真实中文词频的随机中文文本，类似于“Lorem Ipsum”，可以用于设计、排版或其他需要示例文本的场合。">
+    <meta name="keywords" content="中文 Lorem Ipsum, 中文随机文本, 中文文本生成器, 中文示例文本, 中文文本排版">
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <button class="theme-toggle" onclick="toggleTheme()">🌓</button>
+    <div class="container">
+        <h1>中文 Lorem Ipsum 生成器</h1>
+        <p class="intro">
+            这个工具可以生成随机的中文文本，类似于“Lorem Ipsum”，用于设计、排版或其他需要示例文本的场合。
+            您可以自定义段落数量、每段句子数量范围和最大句子长度。和其他 Lorem Ipsum 生成器不同的是，这个工具生成的文本并不是从词库中随机选择拼接而成的，而是依据各词语出现的频率抽取，生成的更接近日常真实中文文本的随机文本。
+        </p>
+        <form id="loremForm">
+            <div class="form-group">
+                <label for="num_paragraphs">段落数量范围:</label>
+                <input type="text" class="form-control" id="num_paragraphs" value="3,5" placeholder="例如: 3,5">
+                <div class="error-message" id="num_paragraphs_error"></div>
+            </div>
+            <div class="form-group">
+                <label for="num_sentences">每段句子数量范围:</label>
+                <input type="text" class="form-control" id="num_sentences" value="4,8" placeholder="例如: 4,8">
+                <div class="error-message" id="num_sentences_error"></div>
+            </div>
+            <div class="form-group">
+                <label for="max_sentence_length">最大句子长度:</label>
+                <input type="number" class="form-control" id="max_sentence_length" min="5" value="20">
+                <div class="error-message" id="max_sentence_length_error"></div>
+            </div>
+            <button type="button" class="btn btn-primary" onclick="generateLoremIpsum()">生成</button>
+            <div class="success-message" id="success_message">&bnsp;</div>
+        </form>
+        <div class="spinner-border text-primary text-center" role="status" id="loading_spinner">
+            <span class="sr-only">Loading...</span>
+        </div>
+        <div class="result-container">
+            <div id="result" class="result" onclick="makeEditable()"></div>
+            <button id="copy-button" class="copy-button" onclick="copyToClipboard()">复制</button>
+        </div>
+    </div>
+
+    <!-- Toast notification -->
+    <div class="toast align-items-center text-white bg-primary" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="d-flex">
+            <div class="toast-body" id="toast-message"></div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script src="./script.js"></script>
+</body>
+
+</html>
