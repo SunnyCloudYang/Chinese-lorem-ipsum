@@ -12,7 +12,7 @@ chars = []
 probs = []
 commas = '，—、；： '
 dots = '。！？'
-with open('./word_freq.txt', 'r', encoding='utf-8') as f:
+with open('./api/word_freq.txt', 'r', encoding='utf-8') as f:
     for line in f:
         char, freq = line.strip().split()
         char_frequency[char] = float(freq)
