@@ -12,7 +12,7 @@ chars = []
 probs = []
 commas = '，—、；： '
 dots = '。！？'
-with open('word_freq.txt', 'r', encoding='utf-8') as f:
+with open('./word_freq.txt', 'r', encoding='utf-8') as f:
     for line in f:
         char, freq = line.strip().split()
         char_frequency[char] = float(freq)
@@ -56,6 +56,11 @@ def generate_text(num_paragraphs_range=[3, 5], num_sentences_range=[4, 8], max_s
 @app.route('/')
 def home():
     return 'Lorem Ipsum API'
+
+@app.route('/generate', methods=['GET'])
+def generate_default_text_endpoint():
+    generated_text = generate_text()
+    return jsonify({'loremText': generated_text})
 
 @app.route('/generate', methods=['POST'])
 def generate_text_endpoint():
