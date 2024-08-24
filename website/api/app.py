@@ -1,10 +1,8 @@
 from flask import Flask, request, jsonify
-from flask_cors import CORS
 import random
 
 # Initialize Flask app and enable CORS
 app = Flask(__name__)
-CORS(app)
 
 # Load the character frequency data
 char_frequency = {}
@@ -53,16 +51,16 @@ def generate_text(num_paragraphs_range=[3, 5], num_sentences_range=[4, 8], max_s
     return '\n'.join(generate_paragraph(num_sentences_range, max_sentence_length) for _ in range(num_paragraphs))
 
 
-@app.route('/')
+@app.route('/api/', methods=['GET'])
 def home():
     return 'Lorem Ipsum API'
 
-@app.route('/generate', methods=['GET'])
+@app.route('/api/generate/', methods=['GET'])
 def generate_default_text_endpoint():
     generated_text = generate_text()
     return jsonify({'loremText': generated_text})
 
-@app.route('/generate', methods=['POST'])
+@app.route('/api/generate/', methods=['POST'])
 def generate_text_endpoint():
     data = request.json
     num_paragraphs_range = data.get('num_paragraphs_range', [3, 5])
