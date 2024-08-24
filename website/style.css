@@ -93,6 +93,7 @@ body.dark-theme .btn-primary:hover {
 }
 
 .result {
+    display: none;
     padding: 15px;
     background-color: #f8f9fa;
     border: 1px solid #dee2e6;
@@ -104,7 +105,6 @@ body.dark-theme .btn-primary:hover {
     transform: translateY(20px);
     transition: opacity 0.5s ease, transform 0.5s ease, background-color 0.5s ease, border-color 0.5s ease;
     overflow: auto;
-    cursor: pointer;
     color: inherit;
 }
 
@@ -119,6 +119,7 @@ body.dark-theme .result {
 }
 
 .result.show {
+    display: block;
     opacity: 1;
     transform: translateY(0);
 }
@@ -148,6 +149,7 @@ body.dark-theme .result {
 
 .error-message,
 .success-message {
+    display: none;
     font-size: 14px;
     font-weight: 600;
     color: #c52f3edd;
@@ -175,6 +177,7 @@ body.dark-theme .result {
 
 .error-message.show,
 .success-message.show {
+    display: block;
     opacity: 1;
     transform: translateY(0);
 }
@@ -186,6 +189,7 @@ body.dark-theme .result {
 .spinner-border.show {
     display: inline-block;
     margin-left: calc(50% - 1rem);
+    margin-top: 20px;
 }
 
 .theme-toggle {
