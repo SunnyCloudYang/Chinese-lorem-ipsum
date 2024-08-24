@@ -54,6 +54,7 @@ async function generateLoremIpsum() {
   document.getElementById('num_sentences_error').classList.remove('show');
   document.getElementById('max_sentence_length_error').classList.remove('show');
   document.getElementById('success_message').classList.remove('show');
+  document.getElementById('success_message').classList.remove('success');
   document.getElementById('result').classList.remove('show');
   document.getElementById('copy-button').classList.remove('show');
   document.getElementById('loading_spinner').classList.add('show');
