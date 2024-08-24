@@ -61,6 +61,10 @@ body.dark-theme .form-group input {
     color: #f0f0f0;
 }
 
+button:focus {
+    outline: none;
+}
+
 .btn-primary {
     background-image: linear-gradient(to right, #ff512f, #dd2476);
     border: none;
