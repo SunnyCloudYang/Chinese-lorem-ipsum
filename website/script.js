@@ -49,6 +49,9 @@ window.onload = function () {
 }
 
 async function generateLoremIpsum() {
+  if (document.getElementById('loading_spinner').classList.contains('show')) {
+    return;
+  }
   // Clear previous messages
   document.getElementById('num_paragraphs_error').classList.remove('show');
   document.getElementById('num_sentences_error').classList.remove('show');
@@ -58,6 +61,7 @@ async function generateLoremIpsum() {
   document.getElementById('result').classList.remove('show');
   document.getElementById('copy-button').classList.remove('show');
   document.getElementById('loading_spinner').classList.add('show');
+  document.getElementById('generate_btn').classList.add('disabled');
 
   // Get input values
   const num_paragraphs = document.getElementById('num_paragraphs').value.split(',').map(Number);
@@ -84,6 +88,7 @@ async function generateLoremIpsum() {
 
   if (!isValid) {
     document.getElementById('loading_spinner').classList.remove('show');
+    document.getElementById('generate_btn').classList.remove('disabled');
     return;
   }
 
@@ -113,6 +118,7 @@ async function generateLoremIpsum() {
   } finally {
     document.getElementById('loading_spinner').classList.remove('show');
     document.getElementById('success_message').classList.add('show');
+    document.getElementById('generate_btn').classList.remove('disabled');
     if (document.getElementById('result').innerText) {
       document.getElementById('result').classList.add('show');
       document.getElementById('copy-button').classList.add('show');
