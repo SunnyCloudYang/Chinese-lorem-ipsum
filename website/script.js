@@ -34,6 +34,20 @@ function validateInput(input, range) {
   return true;
 }
 
+window.onload = function () {
+  try {
+    fetch('/api/').then(response => {
+      if (response.ok) {
+        console.log('Connected to the server');
+      } else {
+        console.error('Failed to connect to the server');
+      }
+    });
+  } catch (error) {
+    console.error('Failed to connect to the server');
+  }
+}
+
 async function generateLoremIpsum() {
   // Clear previous messages
   document.getElementById('num_paragraphs_error').classList.remove('show');
@@ -73,7 +87,7 @@ async function generateLoremIpsum() {
   }
 
   try {
-    const response = await fetch('https://chinese-lorem-ipsum.vercel.app/api/generate', {
+    const response = await fetch('/api/generate', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
