@@ -53,7 +53,7 @@ def generate_text(num_paragraphs_range=[3, 5], num_sentences_range=[4, 8], max_s
     return '\n'.join(generate_paragraph(num_sentences_range, max_sentence_length) for _ in range(num_paragraphs))
 
 
-@app.route('/api/generate', methods=['POST'])
+@app.route('/generate', methods=['POST'])
 def generate_text_endpoint():
     data = request.json
     num_paragraphs_range = data.get('num_paragraphs_range', [3, 5])
