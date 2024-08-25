@@ -63,9 +63,9 @@ async function generateLoremIpsum() {
   document.getElementById('loading_spinner').classList.add('show');
   document.getElementById('generate_btn').classList.add('disabled');
 
-  // Get input values
-  const num_paragraphs = document.getElementById('num_paragraphs').value.split(',').map(Number);
-  const num_sentences = document.getElementById('num_sentences').value.split(',').map(Number);
+  // Get input values split by any non-digit character
+  const num_paragraphs = document.getElementById('num_paragraphs').value.split(/\D+/).map(Number);
+  const num_sentences = document.getElementById('num_sentences').value.split(/\D+/).map(Number);
   const max_sentence_length = document.getElementById('max_sentence_length').value;
 
   // Validate inputs
@@ -80,8 +80,8 @@ async function generateLoremIpsum() {
     document.getElementById('num_sentences_error').classList.add('show');
     isValid = false;
   }
-  if (isNaN(max_sentence_length) || max_sentence_length < 5) {
-    document.getElementById('max_sentence_length_error').textContent = '请输入一个有效的句子长度 (最小为 5)';
+  if (isNaN(max_sentence_length) || max_sentence_length < 5 || max_sentence_length > 50) {
+    document.getElementById('max_sentence_length_error').textContent = '请输入一个有效的句子长度 (最小为 5，不超过 50)';
     document.getElementById('max_sentence_length_error').classList.add('show');
     isValid = false;
   }
