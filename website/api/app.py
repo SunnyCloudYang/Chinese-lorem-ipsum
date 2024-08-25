@@ -22,8 +22,6 @@ def generate_sentence(min_length=5, max_length=20):
     sentence_length = random.randint(min_length, max_length)
     sentence = []
     for _ in range(sentence_length):
-        if len(sentence) > max_length:
-            break
         if not sentence:
             first_char = random.choices(chars, weights=probs)[0]
             while first_char == '的':
@@ -33,6 +31,8 @@ def generate_sentence(min_length=5, max_length=20):
             next_char = random.choices(chars, weights=probs)[0]
             while next_char == sentence[-1]:
                 next_char = random.choices(chars, weights=probs)[0]
+            if len(sentence) + len(next_char) > max_length:
+                break
             sentence.append(next_char)
     if len(sentence) > 0.2 * max_length and random.random() < len(sentence) / max_length:
         comma = random.choices(
