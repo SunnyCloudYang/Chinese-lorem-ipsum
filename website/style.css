@@ -8,9 +8,28 @@ body.dark-theme {
     color: #f0f0f0;
 }
 
+#text-background {
+    position: fixed;
+    top: calc(-50vw * sin(20deg));
+    left: calc(-50vh * sin(20deg));
+    width: calc(100vw + 100vh * sin(20deg));
+    height: calc(100vh + 100vw * sin(20deg));
+    line-height: normal;
+    font-size: 64px;
+    font-display: swap;
+    font-weight: 700;
+    overflow: hidden;
+    transform: rotate(-20deg);
+    transform-origin: center;
+    user-select: none;
+    opacity: 0.05;
+    margin: 0 12px;
+    z-index: -1;
+}
+
 .container {
     max-width: 700px;
-    margin: 50px auto;
+    margin: 80px auto;
     background-color: #ffffff;
     padding: 36px;
     border-radius: 16px;
@@ -197,11 +216,37 @@ body.dark-theme .result {
     position: absolute;
     top: 20px;
     right: 20px;
+    height: 24px;
+    line-height: 1;
     background-color: transparent;
+    padding: 0;
     border: none;
     font-size: 24px;
     cursor: pointer;
     transition: transform 0.3s ease;
+}
+
+.github-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 26px;
+    height: 26px;
+    line-height: 1;
+    background-color: transparent;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+body.dark-theme .github-button {
+    color: #f0f0f0;
+}
+
+.github-button:hover {
+    scale: 1.1;
 }
 
 .theme-toggle:hover {

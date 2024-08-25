@@ -1,10 +1,10 @@
 // Theme toggle logic
 const themeToggle = document.querySelector('.theme-toggle');
 
-function setTheme(theme) {
+function setTheme(theme, notify = true) {
   document.body.className = theme;
   localStorage.setItem('theme', theme);
-  showToast(`主题切换为 ${theme === 'light-theme' ? '浅色' : '深色'}`);
+  notify && showToast(`主题切换为 ${theme === 'light-theme' ? '浅色' : '深色'}`);
 }
 
 function toggleTheme() {
@@ -16,10 +16,10 @@ function toggleTheme() {
 function loadTheme() {
   const savedTheme = localStorage.getItem('theme');
   if (savedTheme) {
-    setTheme(savedTheme);
+    setTheme(savedTheme, false);
   } else {
     const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    setTheme(prefersDarkScheme ? 'dark-theme' : 'light-theme');
+    setTheme(prefersDarkScheme ? 'dark-theme' : 'light-theme', false);
   }
 }
 
@@ -36,9 +36,20 @@ function validateInput(input, range) {
 
 window.onload = function () {
   try {
-    fetch('/api/').then(response => {
+    fetch('/api/generate/').then(response => {
       if (response.ok) {
         console.log('Connected to the server');
+        response.json().then(data => {
+          let bg_text = data.loremText;
+          while (bg_text.length < 500) {
+            bg_text = bg_text.repeat(2);
+          }
+          let typed = new Typed('#text-background', {
+            strings: [bg_text],
+            loop: false,
+            showCursor: false,
+          });
+        });
       } else {
         console.error('Failed to connect to the server');
       }
@@ -93,7 +104,7 @@ async function generateLoremIpsum() {
   }
 
   try {
-    const response = await fetch('/api/generate', {
+    const response = await fetch('/api/generate/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
