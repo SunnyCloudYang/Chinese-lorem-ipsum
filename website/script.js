@@ -34,6 +34,7 @@ function validateInput(input, range) {
   return true;
 }
 
+const bg_text_element = document.getElementById('text-background');
 window.onload = function () {
   try {
     fetch('/api/generate/').then(response => {
@@ -41,9 +42,13 @@ window.onload = function () {
         console.log('Connected to the server');
         response.json().then(data => {
           let bg_text = data.loremText;
-          while (bg_text.length < 500) {
-            bg_text = bg_text.repeat(2);
+          bg_text_element.textContent = bg_text;
+          while (bg_text_element.clientHeight >= bg_text_element.scrollHeight) {
+            bg_text = bg_text + data.loremText;
+            bg_text_element.textContent = bg_text;
           }
+          bg_text_element.textContent = '';
+          bg_text_element.classList.add('show');
           let typed = new Typed('#text-background', {
             strings: [bg_text],
             loop: false,
@@ -56,6 +61,12 @@ window.onload = function () {
     });
   } catch (error) {
     console.error('Failed to connect to the server');
+  }
+}
+
+window.onresize = function () {
+  while (bg_text_element.clientHeight >= bg_text_element.scrollHeight) {
+    bg_text_element.textContent = bg_text_element.textContent + bg_text_element.textContent;
   }
 }
 

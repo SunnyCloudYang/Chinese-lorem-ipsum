@@ -48,7 +48,7 @@ def generate_paragraph(num_sentences_range=[4, 8], max_sentence_length=20):
     return ''.join(generate_sentence(max_length=max_sentence_length) for _ in range(num_sentences))
 
 
-def generate_text(num_paragraphs_range=[3, 5], num_sentences_range=[4, 8], max_sentence_length=20):
+def generate_text(num_paragraphs_range=[3, 5], num_sentences_range=[4, 8], max_sentence_length=6):
     num_paragraphs = random.randint(*num_paragraphs_range)
     return '\n'.join(generate_paragraph(num_sentences_range, max_sentence_length) for _ in range(num_paragraphs))
 
