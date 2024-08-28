@@ -84,6 +84,7 @@ async function generateLoremIpsum() {
   document.getElementById('copy-button').classList.remove('show');
   document.getElementById('loading_spinner').classList.add('show');
   document.getElementById('generate_btn').classList.add('disabled');
+  document.getElementById('generate_btn').disabled = true;
 
   // Get input values split by any non-digit character
   const num_paragraphs = document.getElementById('num_paragraphs').value.split(/\D+/).map(Number);
@@ -141,6 +142,7 @@ async function generateLoremIpsum() {
     document.getElementById('loading_spinner').classList.remove('show');
     document.getElementById('success_message').classList.add('show');
     document.getElementById('generate_btn').classList.remove('disabled');
+    document.getElementById('generate_btn').disabled = false;
     if (document.getElementById('result').innerText) {
       document.getElementById('result').classList.add('show');
       document.getElementById('copy-button').classList.add('show');
