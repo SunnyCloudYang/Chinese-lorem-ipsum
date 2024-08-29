@@ -1,3 +1,9 @@
+import { inject } from "@vercel/analytics"
+import { injectSpeedInsights } from '@vercel/speed-insights';
+
+inject();
+injectSpeedInsights();
+
 // Theme toggle logic
 const themeToggle = document.querySelector('.theme-toggle');
 
