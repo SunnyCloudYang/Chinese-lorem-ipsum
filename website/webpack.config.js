@@ -1,10 +1,13 @@
 const path = require('path');
 
 module.exports = {
-    entry: './script.js', // your main JavaScript file
+    entry: './script.js',
     output: {
         filename: 'bundle.js',
         path: path.resolve(__dirname, ''),
     },
     mode: 'production',
+    optimization: {
+        minimize: false, // Disable minification
+  },
 };
