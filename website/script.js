@@ -1,4 +1,4 @@
-import { inject } from "@vercel/analytics"
+import { inject } from "@vercel/analytics";
 import { injectSpeedInsights } from '@vercel/speed-insights';
 
 inject();
@@ -6,6 +6,12 @@ injectSpeedInsights();
 
 // Theme toggle logic
 const themeToggle = document.querySelector('.theme-toggle');
+const generateBtn = document.getElementById('generate_btn');
+const copyBtn = document.getElementById('copy-button');
+
+themeToggle.addEventListener('click', toggleTheme);
+generateBtn.addEventListener('click', generateLoremIpsum);
+copyBtn.addEventListener('click', copyToClipboard);
 
 function setTheme(theme, notify = true) {
   document.body.className = theme;

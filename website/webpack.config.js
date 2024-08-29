@@ -7,7 +7,4 @@ module.exports = {
         path: path.resolve(__dirname, ''),
     },
     mode: 'production',
-    optimization: {
-        minimize: false, // Disable minification
-  },
 };

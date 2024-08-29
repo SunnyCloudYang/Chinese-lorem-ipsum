@@ -14,7 +14,7 @@
 
 <body>
     <div class="text-background" id="text-background"></div>
-    <button class="theme-toggle" onclick="toggleTheme()">🌓</button>
+    <button class="theme-toggle">🌓</button>
     <button class="github-button" onclick="window.open('https://github.com/SunnyCloudYang/ChineseLoremIpsum', '_blank')">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-github"
             viewBox="0 0 16 16">
@@ -44,7 +44,7 @@
                 <input type="number" class="form-control" id="max_sentence_length" min="5" value="20" max="50">
                 <div class="error-message" id="max_sentence_length_error"></div>
             </div>
-            <button type="button" class="btn btn-primary" id="generate_btn" onclick="generateLoremIpsum()">生成</button>
+            <button type="button" class="btn btn-primary" id="generate_btn">生成</button>
             <div class="success-message" id="success_message">&nbsp;</div>
         </form>
         <div class="spinner-border text-primary text-center" role="status" id="loading_spinner">
@@ -52,7 +52,7 @@
         </div>
         <div class="result-container">
             <div id="result" class="result" onclick="makeEditable()"></div>
-            <button id="copy-button" class="copy-button" onclick="copyToClipboard()">复制</button>
+            <button id="copy-button" class="copy-button">复制</button>
         </div>
     </div>
 
