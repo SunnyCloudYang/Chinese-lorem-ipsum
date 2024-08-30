@@ -1,6 +1,6 @@
 # Chinese Lorem Ipsum Generator
 
-[![Website chinese-lorem-ipsum.vercel.app](https://img.shields.io/website-up-down-green-red/https/naereen.github.io.svg)](https://chinese-lorem-ipsum.vercel.app/) [![GitHub license](https://badgen.net/github/license/Naereen/Strapdown.js)](https://github.com/Naereen/StrapDown.js/blob/master/LICENSE)
+[![Website chinese-lorem-ipsum.vercel.app](https://img.shields.io/website-up-down-green-red/https/naereen.github.io.svg)](https://chinese-lorem-ipsum.vercel.app/) [![GitHub license](https://badgen.net/github/license/Naereen/Strapdown.js)](https://github.com/SunnyCloudYang/ChineseLoremIpsum/blob/main/LICENSE)
 
 ## Description
 
@@ -75,7 +75,7 @@ By default, it generates a random text with 3~5 paragraphs, 4~8 sentences per pa
 
 ## Usage
 
-### Website
+### Interactive
 
 1. Navigate to the website directory:
 
@@ -92,7 +92,7 @@ By default, it generates a random text with 3~5 paragraphs, 4~8 sentences per pa
 3. Open your browser and navigate to `http://localhost:3000`.
 4. Click the "Generate" button to generate a random text.
 
-### Locally
+### Script
 
 1. Ensure you have the `word_freq.txt` file in the project directory.
 2. Run the script to generate a random text with 3~5 paragraphs and 4~8 sentences per paragraph:
@@ -130,4 +130,4 @@ This project is licensed under the MIT License.
 
 ## Contact
 
-[SunnyCloudYang@outlook.com](mailto:SunnyCloudYang@outlook.com)
+[sunnycloudyang@outlook.com](mailto:sunnycloudyang@outlook.com)

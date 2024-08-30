@@ -1,6 +1,6 @@
 # 中文假字生成器
 
-[![Website chinese-lorem-ipsum.vercel.app](https://img.shields.io/website-up-down-green-red/https/naereen.github.io.svg)](https://chinese-lorem-ipsum.vercel.app/) [![GitHub license](https://badgen.net/github/license/Naereen/Strapdown.js)](https://github.com/Naereen/StrapDown.js/blob/master/LICENSE)
+[![Website chinese-lorem-ipsum.vercel.app](https://img.shields.io/website-up-down-green-red/https/naereen.github.io.svg)](https://chinese-lorem-ipsum.vercel.app/) [![GitHub license](https://badgen.net/github/license/Naereen/Strapdown.js)](https://github.com/SunnyCloudYang/ChineseLoremIpsum/blob/main/LICENSE)
 
 ## 描述
 
@@ -75,7 +75,7 @@
 
 ## 使用
 
-### 网站
+### 交互式
 
 1. 进入网站目录：
 
@@ -92,7 +92,7 @@
 3. 打开浏览器并导航到 [`http://localhost:3000`](http://localhost:3000)。
 4. 点击“生成”按钮生成随机文本。
 
-### 本地
+### 脚本
 
 1. 确保项目目录中有 `word_freq.txt`文件。
 2. 运行脚本生成包含 3~5 段，每段 4~8 句的随机文本：
@@ -130,4 +130,4 @@
 
 ## 联系
 
-[SunnyCloudYang@outlook.com](mailto:SunnyCloudYang@outlook.com)
+[sunnycloudyang@outlook.com](mailto:sunnycloudyang@outlook.com)
