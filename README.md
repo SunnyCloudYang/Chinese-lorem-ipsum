@@ -1,6 +1,6 @@
 # Chinese Lorem Ipsum Generator
 
-[![Website chinese-lorem-ipsum.vercel.app](https://img.shields.io/website-up-down-green-red/https/naereen.github.io.svg)](https://chinese-lorem-ipsum.vercel.app/) [![GitHub license](https://badgen.net/github/license/Naereen/Strapdown.js)](https://github.com/SunnyCloudYang/ChineseLoremIpsum/blob/main/LICENSE)
+[![Website chinese-lorem-ipsum.vercel.app](https://img.shields.io/website-up-down-green-red/https/naereen.github.io.svg)](https://chinese-lorem-ipsum.vercel.app/) [![GitHub license](https://badgen.net/github/license/Naereen/Strapdown.js)](https://github.com/SunnyCloudYang/Chinese-lorem-ipsum/blob/main/LICENSE)
 
 ## Description
 
@@ -19,13 +19,13 @@ By default, it generates a random text with 3\~5 paragraphs, 4\~8 sentences per 
 1. Clone the repository:
 
     ```sh
-    git clone https://github.com/SunnyCloudYang/ChineseLoremIpsum.git
+    git clone https://github.com/SunnyCloudYang/Chinese-lorem-ipsum.git
     ```
 
 2. Navigate to the project directory:
 
     ```sh
-    cd ChineseLoremIpsum
+    cd Chinese-lorem-ipsum
     ```
 
 3. Set up a virtual environment:
@@ -58,13 +58,13 @@ By default, it generates a random text with 3\~5 paragraphs, 4\~8 sentences per 
 1. Clone the repository:
 
     ```sh
-    git clone https://github.com/SunnyCloudYang/ChineseLoremIpsum.git
+    git clone https://github.com/SunnyCloudYang/Chinese-lorem-ipsum.git
     ```
 
 2. Navigate to the project directory:
 
     ```sh
-    cd ChineseLoremIpsum/website
+    cd Chinese-lorem-ipsum/website
     ```
 
 3. Install the required dependencies:
@@ -80,7 +80,7 @@ By default, it generates a random text with 3\~5 paragraphs, 4\~8 sentences per 
 1. Navigate to the website directory:
 
     ```sh
-    cd ChineseLoremIpsum/website
+    cd Chinese-lorem-ipsum/website
     ```
 
 2. Run the Vercel development server:

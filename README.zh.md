@@ -1,6 +1,6 @@
 # 中文假字生成器
 
-[![Website chinese-lorem-ipsum.vercel.app](https://img.shields.io/website-up-down-green-red/https/naereen.github.io.svg)](https://chinese-lorem-ipsum.vercel.app/) [![GitHub license](https://badgen.net/github/license/Naereen/Strapdown.js)](https://github.com/SunnyCloudYang/ChineseLoremIpsum/blob/main/LICENSE)
+[![Website chinese-lorem-ipsum.vercel.app](https://img.shields.io/website-up-down-green-red/https/naereen.github.io.svg)](https://chinese-lorem-ipsum.vercel.app/) [![GitHub license](https://badgen.net/github/license/Naereen/Strapdown.js)](https://github.com/SunnyCloudYang/Chinese-lorem-ipsum/blob/main/LICENSE)
 
 ## 描述
 
@@ -19,13 +19,13 @@
 1. 克隆仓库：
 
     ```sh
-    git clone https://github.com/SunnyCloudYang/ChineseLoremIpsum.git
+    git clone https://github.com/SunnyCloudYang/Chinese-lorem-ipsum.git
     ```
 
 2. 进入项目目录：
 
     ```sh
-    cd ChineseLoremIpsum
+    cd Chinese-lorem-ipsum
     ```
 
 3. 设置虚拟环境：
@@ -58,13 +58,13 @@
 1. 克隆仓库：
 
     ```sh
-    git clone https://github.com/SunnyCloudYang/ChineseLoremIpsum.git
+    git clone https://github.com/SunnyCloudYang/Chinese-lorem-ipsum.git
     ```
 
 2. 进入项目目录：
 
     ```sh
-    cd ChineseLoremIpsum/website
+    cd Chinese-lorem-ipsum/website
     ```
 
 3. 安装依赖：
@@ -80,7 +80,7 @@
 1. 进入网站目录：
 
     ```sh
-    cd ChineseLoremIpsum/website
+    cd Chinese-lorem-ipsum/website
     ```
 
 2. 运行 Vercel 开发服务器：
