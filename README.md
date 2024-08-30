@@ -6,7 +6,7 @@
 
 This project generates random text based on real world frequency table of Chinese characters. It reads character frequencies from a file and uses them to generate random sentences.
 
-By default, it generates a random text with 3~5 paragraphs, 4~8 sentences per paragraph, and no more than 20 characters per sentence, which is about 300 characters.
+By default, it generates a random text with 3\~5 paragraphs, 4\~8 sentences per paragraph, and no more than 20 characters per sentence, which is about 300 characters.
 
 ## Website
 
@@ -95,7 +95,7 @@ By default, it generates a random text with 3~5 paragraphs, 4~8 sentences per pa
 ### Script
 
 1. Ensure you have the `word_freq.txt` file in the project directory.
-2. Run the script to generate a random text with 3~5 paragraphs and 4~8 sentences per paragraph:
+2. Run the script to generate a random text with 3\~5 paragraphs and 4\~8 sentences per paragraph:
 
     ```sh
     python lorem_ipsum.py

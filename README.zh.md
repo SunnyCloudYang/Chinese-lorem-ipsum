@@ -6,7 +6,7 @@
 
 该项目基于真实世界的中文字符频率表生成随机文本。它从文件中读取词语频率，并按照词频生成随机句子。
 
-默认情况下，它会生成包含 3~5 段，每段 4~8 句，每句不超过20个字的随机文本，大约300字。
+默认情况下，它会生成包含 3\~5 段，每段 4\~8 句，每句不超过20个字的随机文本，大约300字。
 
 ## 网站
 
@@ -47,7 +47,7 @@
         source venv/bin/activate
         ```
 
-5. 安装所需依赖：
+5. 安装依赖：
 
     ```sh
     pip install -r requirements.txt
@@ -67,7 +67,7 @@
     cd ChineseLoremIpsum/website
     ```
 
-3. 安装所需依赖：
+3. 安装依赖：
 
     ```sh
     npm install
@@ -95,7 +95,7 @@
 ### 脚本
 
 1. 确保项目目录中有 `word_freq.txt`文件。
-2. 运行脚本生成包含 3~5 段，每段 4~8 句的随机文本：
+2. 运行脚本生成包含 3\~5 段，每段 4\~8 句的随机文本：
 
     ```sh
     python lorem_ipsum.py
@@ -122,7 +122,7 @@
     git push origin feature/your-feature
     ```
 
-5. 打开一个 pull request。
+5. 提交 pull request。
 
 ## 许可证
 
