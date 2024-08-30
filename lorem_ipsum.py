@@ -1,7 +1,6 @@
 import random
 
-# 加载汉字字频表char_freq.txt，以字符-频率键值对的方式存储
-char_frequency = {}
+# 加载汉字字频表
 chars = []
 probs = []
 commas = '，—、；： '
@@ -9,11 +8,10 @@ dots = '。！？'
 with open('word_freq.txt', 'r', encoding='utf-8') as f:
     for line in f:
         char, freq = line.strip().split()
-        char_frequency[char] = float(freq)
         chars.append(char)
         probs.append(float(freq))
 
-# 基于马尔可夫链的生成模型
+# 基于真实汉字字频表生成随机文本
 def generate_sentence(min_length=5, max_length=20):
     sentence_length = random.randint(min_length, max_length)
     sentence = []
