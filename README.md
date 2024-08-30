@@ -6,6 +6,12 @@
 
 This project generates random text based on real world frequency table of Chinese characters. It reads character frequencies from a file and uses them to generate random sentences.
 
+By default, it generates a random text with 3~5 paragraphs, 4~8 sentences per paragraph, and no more than 20 characters per sentence, which is about 300 characters.
+
+## Website
+
+[Chinese Lorem Ipsum Generator](https://chinese-lorem-ipsum.vercel.app/)
+
 ## Installation
 
 ### Local Installation
