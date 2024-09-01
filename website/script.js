@@ -8,10 +8,12 @@ injectSpeedInsights();
 const themeToggle = document.querySelector('.theme-toggle');
 const generateBtn = document.getElementById('generate_btn');
 const copyBtn = document.getElementById('copy-button');
+const textArea = document.getElementById('result');
 
 themeToggle.addEventListener('click', toggleTheme);
 generateBtn.addEventListener('click', generateLoremIpsum);
 copyBtn.addEventListener('click', copyToClipboard);
+textArea.addEventListener('click', makeEditable);
 
 function setTheme(theme, notify = true) {
   document.body.className = theme;
@@ -93,6 +95,7 @@ async function generateLoremIpsum() {
   document.getElementById('success_message').classList.remove('show');
   document.getElementById('success_message').classList.remove('success');
   document.getElementById('result').classList.remove('show');
+  document.getElementById('charCount').classList.remove('show');
   document.getElementById('copy-button').classList.remove('show');
   document.getElementById('loading_spinner').classList.add('show');
   document.getElementById('generate_btn').classList.add('disabled');
@@ -145,6 +148,7 @@ async function generateLoremIpsum() {
       document.getElementById('result').textContent = data.loremText;
       document.getElementById('success_message').textContent = '文本生成成功！';
       document.getElementById('success_message').classList.add('success');
+      document.getElementById('charCount').textContent = `字数: ${data.loremText.length}`;
     } else {
       document.getElementById('success_message').textContent = '生成文本时出错，请重试。';
     }
@@ -158,6 +162,7 @@ async function generateLoremIpsum() {
     if (document.getElementById('result').innerText) {
       document.getElementById('result').classList.add('show');
       document.getElementById('copy-button').classList.add('show');
+      document.getElementById('charCount').classList.add('show');
     }
   }
 }
@@ -175,6 +180,9 @@ function makeEditable() {
   const resultText = document.getElementById('result');
   resultText.setAttribute('contenteditable', 'true');
   resultText.focus();
+  resultText.oninput = function () {
+    document.getElementById('charCount').textContent = `字数: ${resultText.innerText.length}`;
+  }
 }
 
 function showToast(message) {

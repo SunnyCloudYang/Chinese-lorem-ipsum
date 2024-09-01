@@ -216,6 +216,22 @@ body.dark-theme .result {
     margin-top: 20px;
 }
 
+#charCount {
+    font-size: 14px;
+    color: #666;
+    margin-top: 8px;
+    margin-right: 4px;
+    opacity: 0;
+}
+
+body.dark-theme #charCount {
+    color: #999;
+}
+
+#charCount.show {
+    opacity: 1;
+}
+
 .theme-toggle {
     position: absolute;
     top: 20px;
