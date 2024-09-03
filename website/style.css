@@ -280,6 +280,7 @@ body.dark-theme .github-button {
     z-index: 1050;
     min-width: 200px;
     opacity: 0;
+    border-radius: 8px;
     transform: translateY(100px);
     transition: opacity 0.5s ease, transform 0.5s ease;
 }
