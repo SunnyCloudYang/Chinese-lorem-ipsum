@@ -104,6 +104,7 @@ async function generateLoremIpsum() {
   document.getElementById('num_paragraphs_error').classList.remove('show');
   document.getElementById('num_sentences_error').classList.remove('show');
   document.getElementById('max_sentence_length_error').classList.remove('show');
+  document.getElementById('exact_length_error').classList.remove('show');
   document.getElementById('success_message').classList.remove('show');
   document.getElementById('success_message').classList.remove('success');
   document.getElementById('result').classList.remove('show');
@@ -121,11 +122,12 @@ async function generateLoremIpsum() {
   const exact_length = document.getElementById('exact_length').value;
 
   if (exact_length) {
-    if (isNaN(exact_length) || exact_length < 1) {
-      document.getElementById('exact_length_error').textContent = '请输入一个有效的文本长度';
+    if (isNaN(exact_length) || exact_length < 1 || exact_length > 10000) {
+      document.getElementById('exact_length_error').textContent = '请输入一个有效的文本长度，范围为 1 到 10000。';
       document.getElementById('exact_length_error').classList.add('show');
       document.getElementById('loading_spinner').classList.remove('show');
       document.getElementById('generate_btn').classList.remove('disabled');
+      document.getElementById('generate_btn').disabled = false;
       return;
     }
 

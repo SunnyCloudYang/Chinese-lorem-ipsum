@@ -3,7 +3,7 @@ import random
 # 加载汉字字频表
 chars = []
 probs = []
-commas = '，—、；：'
+commas = ['，', '——', '、', '；', '：']
 dots = '。！？'
 with open('word_freq.txt', 'r', encoding='utf-8') as f:
     for line in f:
@@ -25,7 +25,7 @@ def generate_sentence(min_length=5, max_length=20):
                 first_char = random.choices(chars, weights=probs)[0]
             sentence += first_char
             continue_length += len(first_char)
-        elif continue_length > 0.2 * sentence_length and random.random() < continue_length / sentence_length and len(sentence) < sentence_length-3:
+        elif continue_length > 5 and random.random() < continue_length / 24 and len(sentence) < sentence_length-3:
             # 生成逗号
             comma = random.choices(
                 commas, weights=[0.6, 0.05, 0.1, 0.05, 0.2])[0]
@@ -57,5 +57,5 @@ def generate_text(num_paragraphs_range=[3, 5], num_sentences_range=[4, 8], max_s
 
 # 测试生成文本
 if __name__ == '__main__':
-    text = generate_sentence(12, 18)
+    text = generate_sentence(4096, 4096)
     print(text, len(text))

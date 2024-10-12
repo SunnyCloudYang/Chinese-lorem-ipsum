@@ -8,7 +8,7 @@ app = Flask(__name__)
 char_frequency = {}
 chars = []
 probs = []
-commas = '，—、；：'
+commas = ['，', '——', '、', '；', '：']
 dots = '。！？'
 with open('./api/word_freq.txt', 'r', encoding='utf-8') as f:
     for line in f:
@@ -31,7 +31,7 @@ def generate_sentence(min_length=5, max_length=20):
                 first_char = random.choices(chars, weights=probs)[0]
             sentence += first_char
             continue_length += len(first_char)
-        elif continue_length > 0.2 * sentence_length and random.random() < continue_length / sentence_length and len(sentence) < sentence_length-3:
+        elif continue_length > 5 and random.random() < continue_length / 24 and len(sentence) < sentence_length-3:
             # 生成逗号
             comma = random.choices(
                 commas, weights=[0.6, 0.05, 0.1, 0.05, 0.2])[0]
@@ -72,7 +72,7 @@ def generate_default_text_endpoint():
 
 @app.route('/api/generate/<int:length>/', methods=['GET'])
 def generate_chars(length):
-    length = min(length, 1000)
+    length = min(length, 10000)
     length = max(length, 1)
     num_sentences = length // 16
     arr_num_sentences = [random.randint(10, 22) for _ in range(num_sentences-1)]
