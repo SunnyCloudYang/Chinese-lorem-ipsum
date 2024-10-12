@@ -20,13 +20,14 @@ with open('./api/word_freq.txt', 'r', encoding='utf-8') as f:
 # Text generation functions
 def generate_sentence(min_length=5, max_length=20):
     sentence_length = random.randint(min_length, max_length)
+    no_dot = sentence_length < 4
     sentence = ''
     continue_length = 0
     for _ in range(sentence_length):
         if not sentence:
             # 第一个字符不能是“的”
             first_char = random.choices(chars, weights=probs)[0]
-            while first_char == '的':
+            while first_char == '的' or len(first_char) > sentence_length:
                 first_char = random.choices(chars, weights=probs)[0]
             sentence += first_char
             continue_length += len(first_char)
@@ -36,19 +37,18 @@ def generate_sentence(min_length=5, max_length=20):
                 commas, weights=[0.6, 0.05, 0.1, 0.05, 0.2])[0]
             sentence += comma
             continue_length = 0
-        else:
+        elif len(sentence) < sentence_length:
             # 简单模拟上下文连贯性（可以使用更复杂的规则）
             next_char = random.choices(chars, weights=probs)[0]
             # 避免重复字符
-            while next_char[0] == sentence[-1] or len(sentence) + len(next_char) > sentence_length-1:
+            while next_char[0] == sentence[-1] or len(sentence) + len(next_char) > sentence_length-(not no_dot):
                 next_char = random.choices(chars, weights=probs)[0]
             sentence += next_char
             continue_length += len(next_char)
-            if len(sentence) == sentence_length-1:
+            if len(sentence) >= sentence_length-(not no_dot):
                 break
     dot = random.choices(dots, weights=[0.6, 0.2, 0.2])[0]
-    result = sentence
-    return result + dot
+    return sentence + ('' if no_dot else dot)
 
 
 def generate_paragraph(num_sentences_range=[4, 8], max_sentence_length=20):
