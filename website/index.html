@@ -26,8 +26,7 @@
     <div class="container">
         <h1>中文 Lorem Ipsum 生成器</h1>
         <p class="intro">
-            这个工具可以生成随机的中文文本，类似于“Lorem Ipsum”，用于设计、排版或其他需要示例文本的场合。
-            您可以自定义段落数量、每段句子数量范围和最大句子长度。和其他 Lorem Ipsum 生成器不同的是，这个工具生成的文本并不是简单从词库中随机选择拼接而成的，而是依据各词语出现的频率抽取，生成的更接近日常真实中文文本的随机文本。
+            这个开源工具可以生成随机的中文文本，用于设计、排版或其他需要示例文本的场合。您可以自定义段落数量、每段句子数量范围和最大句子长度。和其他 Lorem Ipsum 生成器不同的是，这个工具生成的文本并不是简单从词库中随机选择拼接而成的，而是依据各词语出现的频率加权抽取，从而生成更接近日常真实中文文本的随机文本。支持直接在文本框中编辑文本并复制到剪贴板。
         </p>
         <form id="loremForm">
             <div class="form-group">
@@ -45,6 +44,12 @@
                 <input type="number" class="form-control" id="max_sentence_length" min="5" value="20" max="50">
                 <div class="error-message" id="max_sentence_length_error"></div>
             </div>
+            <div class="or-seperator">或</div>
+            <div class="form-group">
+                <label for="exact_length">限定总字数:</label>
+                <input type="number" class="form-control" id="exact_length" min="1" max="1000" value="" placeholder="不限定">
+                <div class="error-message" id="exact_length_error"></div>
+            </div>
             <button type="button" class="btn btn-primary" id="generate_btn">生成</button>
             <div class="success-message" id="success_message">&nbsp;</div>
         </form>
@@ -54,7 +59,7 @@
         <div class="result-container">
             <div id="result" class="result"></div>
             <button id="copy-button" class="copy-button">复制</button>
-            <div id="charCount" class="text-right mt-2"></div> <!-- 字数显示区域 -->
+            <div id="charCount" class="text-right mt-2"></div>
         </div>
     </div>
 

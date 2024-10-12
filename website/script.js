@@ -9,11 +9,23 @@ const themeToggle = document.querySelector('.theme-toggle');
 const generateBtn = document.getElementById('generate_btn');
 const copyBtn = document.getElementById('copy-button');
 const textArea = document.getElementById('result');
+const exact_length = document.getElementById('exact_length');
 
 themeToggle.addEventListener('click', toggleTheme);
 generateBtn.addEventListener('click', generateLoremIpsum);
 copyBtn.addEventListener('click', copyToClipboard);
 textArea.addEventListener('click', makeEditable);
+exact_length.addEventListener('input', function () {
+  if (exact_length.value) {
+    document.getElementById('num_paragraphs').disabled = true;
+    document.getElementById('num_sentences').disabled = true;
+    document.getElementById('max_sentence_length').disabled = true;
+  } else {
+    document.getElementById('num_paragraphs').disabled = false;
+    document.getElementById('num_sentences').disabled = false;
+    document.getElementById('max_sentence_length').disabled = false;
+  }
+});
 
 function setTheme(theme, notify = true) {
   document.body.className = theme;
@@ -79,7 +91,7 @@ window.onload = function () {
 }
 
 window.onresize = function () {
-  while (bg_text_element.clientHeight >= bg_text_element.scrollHeight) {
+  while (bg_text_element.clientHeight >= bg_text_element.scrollHeight && bg_text_element.textContent) {
     bg_text_element.textContent = bg_text_element.textContent + bg_text_element.textContent;
   }
 }
@@ -105,6 +117,47 @@ async function generateLoremIpsum() {
   const num_paragraphs = document.getElementById('num_paragraphs').value.split(/\D+/).map(Number);
   const num_sentences = document.getElementById('num_sentences').value.split(/\D+/).map(Number);
   const max_sentence_length = document.getElementById('max_sentence_length').value;
+
+  const exact_length = document.getElementById('exact_length').value;
+
+  if (exact_length) {
+    if (isNaN(exact_length) || exact_length < 1) {
+      document.getElementById('exact_length_error').textContent = '请输入一个有效的文本长度';
+      document.getElementById('exact_length_error').classList.add('show');
+      document.getElementById('loading_spinner').classList.remove('show');
+      document.getElementById('generate_btn').classList.remove('disabled');
+      return;
+    }
+
+    try {
+      const response = await fetch(`/api/generate/${parseInt(exact_length)}`, {
+        method: 'GET',
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        document.getElementById('result').textContent = data.loremText;
+        document.getElementById('success_message').textContent = '文本生成成功！';
+        document.getElementById('success_message').classList.add('success');
+        document.getElementById('charCount').textContent = `字数: ${data.loremText.length}`;
+      } else {
+        document.getElementById('success_message').textContent = '生成文本时出错，请重试。';
+      }
+    } catch (error) {
+      document.getElementById('success_message').textContent = '无法连接到服务器，请检查您的网络连接。';
+    } finally {
+      document.getElementById('loading_spinner').classList.remove('show');
+      document.getElementById('success_message').classList.add('show');
+      document.getElementById('generate_btn').classList.remove('disabled');
+      document.getElementById('generate_btn').disabled = false;
+      if (document.getElementById('result').innerText) {
+        document.getElementById('result').classList.add('show');
+        document.getElementById('copy-button').classList.add('show');
+        document.getElementById('charCount').classList.add('show');
+      }
+    }
+    return;
+  }
 
   // Validate inputs
   let isValid = true;
