@@ -8,15 +8,23 @@
   - [GET /api/generate](#get-apigenerate)
     - [Description](#description-1)
     - [Response](#response-1)
-  - [POST /api/generate](#post-apigenerate)
+  - [GET /api/generate/<int:length>/](#get-apigenerateintlength)
     - [Description](#description-2)
-    - [Request](#request)
     - [Response](#response-2)
+  - [GET /api/generate/<string:len_type>/](#get-apigeneratestringlentype)
+    - [Description](#description-3)
+    - [Response](#response-3)
+  - [POST /api/generate](#post-apigenerate)
+    - [Description](#description-4)
+    - [Request](#request)
+    - [Response](#response-4)
 
 ## API List
 
 - GET /api/
 - GET /api/generate
+- GET /api/generate/<int:length>/
+- GET /api/generate/<string:len_type>/
 - POST /api/generate
 
 ## GET /api/
@@ -36,6 +44,34 @@ Returns "Lorem Ipsum API". Use this endpoint to check if the API is running.
 ### Description
 
 Generates a random text with default params.
+
+### Response
+
+```json
+{
+  "loremText": "若是电力参加律与，解脱需要应付叫做他们着大得到检验他们价格机制。心上了给的针紧善于陕西以及...",
+}
+```
+
+## GET /api/generate/<int:length>/
+
+### Description
+
+Generates a random text of specified character length.
+
+### Response
+
+```json
+{
+  "loremText": "若是电力参加律与，解脱需要应付叫做他们着大得到检验他们价格机制。心上了给的针紧善于陕西以及...",
+}
+```
+
+## GET /api/generate/<string:len_type>/
+
+### Description
+
+Generates a random text based on the specified length type (tiny, small, short, medium, long).
 
 ### Response
 

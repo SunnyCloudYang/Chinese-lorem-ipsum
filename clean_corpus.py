@@ -23,6 +23,29 @@ def remove_html_markdown(text):
     text = BeautifulSoup(text, "html.parser").get_text()  # 移除 HTML
     text = re.sub(r'\[.*?\]\(.*?\)', '', text)  # 移除 Markdown 链接
     text = re.sub(r'`{1,3}.*?`{1,3}', '', text)  # 移除行内代码
+    text = re.sub(r'!?\[.*?\]\(.*?\)', '', text)  # 移除图片
+    text = re.sub(r'#+\s', '', text)  # 移除标题
+    text = re.sub(r'>+\s', '', text)  # 移除引用
+    text = re.sub(r'-{3,}', '', text)  # 移除分割线
+    text = re.sub(r'[*+-]\s', '', text)  # 移除无序列表
+    text = re.sub(r'\d+\.\s', '', text)  # 移除有序列表
+    text = re.sub(r'```.*?```', '', text, flags=re.DOTALL)  # 移除代码块
+    text = re.sub(r'~~.*?~~', '', text)  # 移除删除线
+    text = re.sub(r':{2}.*?:{2}', '', text)  # 移除表情
+    text = re.sub(r'&[a-z]+;', '', text)  # 移除 HTML 转义符
+    text = re.sub(r'<.*?>', '', text)  # 移除内联标签
+    text = re.sub(r'\s+', ' ', text)  # 合并多个空格
+    text = re.sub(r'https?://[a-zA-Z0-9\./]+', '', text)  # 移除网址
+    text = re.sub(r'@[a-zA-Z0-9_]+', '', text)  # 移除 @ 用户名
+    text = re.sub(r'\{\{.*?\}\}', '', text)  # 移除shortcode
+    text = re.sub(r'\[.*?\]', '', text)  # 移除内联链接
+    text = re.sub(r'\(.*?\)', '', text)  # 移除内联链接
+    text = re.sub(r'\*{1,2}|\_{1,2}|`{1,3}', '', text)
+    # 移除路径
+    text = re.sub(r'\/[a-zA-Z0-9\./]+', '', text)
+    # 移除英文单词加冒号
+    text = re.sub(r'[a-zA-Z]+:', '', text)
+
     return text
 
 # 过滤特殊字符
@@ -60,6 +83,10 @@ def remove_short_lines(text, min_length=10):
     lines = text.split("\n")
     return "\n".join([line for line in lines if len(line) >= min_length])
 
+def remove_front_matter(text):
+    """移除---之间的内容"""
+    return re.sub(r'---.*?---', '', text)
+
 # 语料清理主函数
 def clean_corpus(input_file, output_file):
     if not input_file.endswith(".txt"):
@@ -67,6 +94,7 @@ def clean_corpus(input_file, output_file):
     else:
         with open(input_file, "r", encoding="utf-8") as f:
             raw_text = f.read()
+    raw_text = remove_front_matter(raw_text)  # 移除前言
     raw_text = remove_short_lines(raw_text, 40)  # 移除短句
     raw_text = fullwidth_to_halfwidth(raw_text)  # 转换全角字符
     raw_text = remove_html_markdown(raw_text)  # 移除 HTML/Markdown
@@ -82,7 +110,7 @@ def clean_corpus(input_file, output_file):
         # f.write("\n".join(processed_lines))
         f.write(raw_text)
 
-    # print(f"✅ 语料清洗完成，已保存至 {output_file}")
+    print(f"语料清洗完成，已保存至 {output_file}")
 
 # 运行示例
 if __name__ == "__main__":
@@ -91,5 +119,5 @@ if __name__ == "__main__":
     #     input_file = f"corpus/wiki_{i:02d}"
     #     output_file = f"corpus/cleaned_wiki_{i:02d}.txt"
     #     clean_corpus(input_file, output_file)
-    filename = "wiki_91"
-    clean_corpus(filename, f"corpus/{filename}.txt")
+    filename = "west.txt"
+    clean_corpus(filename, f"corpus/{filename.replace('.txt', '')}.txt")
