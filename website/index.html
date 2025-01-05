@@ -64,7 +64,25 @@
     </div>
 
     <div class="pv-container">
-        Total Visits: <span id="vercount_value_site_pv">Loading</span> times
+        <p>Page Visits: <span id="vercount_value_site_pv">Loading</span> times</p>
+        <p>API Invocations: <span id="vercount_value_api_pv">Loading</span> times</p>
+        <script>
+            fetch('https://events.vercount.one/log', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ url: 'https://chinese-lorem-ipsum.vercel.app/' }),
+            })
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('vercount_value_site_pv').innerText = data.site_pv.value;
+                    document.getElementById('vercount_value_api_pv').innerText = data.page_pv.value - data.site_pv.value;
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
+        </script>
     </div>
 
     <div class="toast align-items-center text-white bg-primary" role="alert" aria-live="assertive" aria-atomic="true">
@@ -77,7 +95,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.9"></script>
-    <script defer src="https://cn.vercount.one/js"></script>
+    <!-- <script defer src="https://cn.vercount.one/js"></script> -->
     <script src="./bundle.js"></script>
 </body>
 

@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify
 import random
+import requests
 
 # Initialize Flask app and enable CORS
 app = Flask(__name__)
@@ -16,6 +17,26 @@ with open('./api/word_freq.txt', 'r', encoding='utf-8') as f:
         char_frequency[char] = float(freq)
         chars.append(char)
         probs.append(float(freq))
+
+def update_stats(path):
+    # fetch script from vercount with referer of path
+    try:
+        headers = {
+            'Referer': f'https://chinese-lorem-ipsum.vercel.app/{path}',
+        }
+        requests.post(
+            'https://events.vercount.one/log',
+            headers=headers,
+            data={'url': f'https://chinese-lorem-ipsum.vercel.app/{path}'}
+            )
+        requests.post(
+            'https://events.vercount.one/log',
+            headers=headers,
+            data={'url': 'https://chinese-lorem-ipsum.vercel.app/api/'}
+            )
+    except Exception as e:
+        print(f'Error updating stats: {e}')
+
 
 # Text generation functions
 def generate_sentence(min_length=5, max_length=20):
@@ -67,11 +88,13 @@ def home():
 
 @app.route('/api/generate/', methods=['GET'])
 def generate_default_text_endpoint():
+    update_stats('api/generate/')
     generated_text = generate_text()
     return jsonify({'loremText': generated_text})
 
 @app.route('/api/generate/<int:length>/', methods=['GET'])
 def generate_chars(length):
+    update_stats(f'api/generate/{length}/')
     length = min(length, 10000)
     length = max(length, 1)
     num_sentences = length // 16
@@ -84,6 +107,7 @@ def generate_chars(length):
 
 @app.route('/api/generate/<string:len_type>/', methods=['GET'])
 def generate_chars_by_type(len_type):
+    update_stats(f'api/generate/{len_type}/')
     if len_type == 'tiny':
         length = random.randint(2, 10)
     elif len_type == 'small':
@@ -100,6 +124,7 @@ def generate_chars_by_type(len_type):
 
 @app.route('/api/generate/', methods=['POST'])
 def generate_text_endpoint():
+    update_stats('api/generate/custom/')
     data = request.json
     num_paragraphs_range = data.get('num_paragraphs_range', [3, 5])
     num_sentences_range = data.get('num_sentences_range', [4, 8])
