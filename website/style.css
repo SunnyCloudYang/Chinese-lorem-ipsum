@@ -42,6 +42,14 @@ body.dark-theme {
     transition: box-shadow 0.3s ease, background-color 0.5s ease;
 }
 
+@media screen and (max-width: 768px) {
+    .container {
+        margin: 16px;
+        padding: 20px;
+        width: calc(100% - 32px);
+    }
+}
+
 body.dark-theme .container {
     color: #f0f0f0;
     background-color: #1e1e1e;
