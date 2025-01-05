@@ -72,12 +72,12 @@
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ url: 'https://chinese-lorem-ipsum.vercel.app/' }),
+                body: JSON.stringify({ url: 'https://chinese-lorem-ipsum.vercel.app/api/' }),
             })
                 .then(response => response.json())
                 .then(data => {
-                    document.getElementById('vercount_value_site_pv').innerText = data.site_pv.value;
-                    document.getElementById('vercount_value_api_pv').innerText = data.page_pv.value - data.site_pv.value;
+                    document.getElementById('vercount_value_site_pv').innerText = data.site_pv - data.page_pv;
+                    document.getElementById('vercount_value_api_pv').innerText = data.page_pv;
                 })
                 .catch((error) => {
                     console.error('Error:', error);
