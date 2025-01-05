@@ -45,7 +45,7 @@ body.dark-theme {
 @media screen and (max-width: 768px) {
     .container {
         margin: 16px;
-        padding: 20px;
+        padding: 28px;
         width: calc(100% - 32px);
     }
 }
