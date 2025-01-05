@@ -306,3 +306,8 @@ div.or-seperator::before, div.or-seperator::after {
     vertical-align: middle;
     margin: 0 10px;
 }
+
+div.pv-container {
+    margin-bottom: 8px;
+    text-align: center;
+}

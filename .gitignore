@@ -160,3 +160,7 @@ cython_debug/
 .vercel
 node_modules/
 package-lock.json
+
+wiki_*
+
+*.txt
