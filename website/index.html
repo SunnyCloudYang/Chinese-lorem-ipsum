@@ -82,30 +82,31 @@
                 })
                     .then(response => response.json())
                     .then(data => {
-                        document.getElementById('vercount_value_page_pv').innerText = data.site_pv - data.page_pv;
+                        // document.getElementById('vercount_value_page_pv').innerText = data.site_pv - data.page_pv;
                         document.getElementById('vercount_value_api_pv').innerText = data.page_pv;
                     })
                     .catch((error) => {
                         console.error('Error:', error);
                     });
             }
-            // function updateSitePv() {
-            //     fetch('https://events.vercount.one/log', {
-            //         method: 'POST',
-            //         headers: {
-            //             'Content-Type': 'application/json',
-            //         },
-            //         body: JSON.stringify({ url: 'https://chinese-lorem-ipsum.vercel.app/' }),
-            //     })
-            //         .then(response => response.json())
-            //         .then(data => {
-            //             document.getElementById('vercount_value_page_pv').innerText = data.page_pv;
-            //         })
-            //         .catch((error) => {
-            //             console.error('Error:', error);
-            //         });
-            // }
+            function updateSitePv() {
+                fetch('https://events.vercount.one/log', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ url: 'https://chinese-lorem-ipsum.vercel.app/' }),
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        document.getElementById('vercount_value_page_pv').innerText = data.page_pv;
+                    })
+                    .catch((error) => {
+                        console.error('Error:', error);
+                    });
+            }
             updateApiPv();
+            updateSitePv();
         </script>
     </div>
 
