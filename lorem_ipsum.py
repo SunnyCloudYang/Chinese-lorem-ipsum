@@ -5,7 +5,9 @@ chars = []
 probs = []
 commas = ['，', '——', '、', '；', '：']
 dots = '。！？'
-with open('word_freq.txt', 'r', encoding='utf-8') as f:
+data_dir = 'data'
+data_file = 'word_freq.txt'
+with open(f'{data_dir}/{data_file}', 'r', encoding='utf-8') as f:
     for line in f:
         char, freq = line.strip().split()
         chars.append(char)
