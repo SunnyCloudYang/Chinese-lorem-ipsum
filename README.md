@@ -1,16 +1,47 @@
 # Chinese Lorem Ipsum Generator
 
-[![Website chinese-lorem-ipsum.vercel.app](https://img.shields.io/website-up-down-green-red/https/naereen.github.io.svg)](https://chinese-lorem-ipsum.vercel.app/) [![GitHub license](https://badgen.net/github/license/Naereen/Strapdown.js)](https://github.com/SunnyCloudYang/Chinese-lorem-ipsum/blob/main/LICENSE)
+[![Website chinese-lorem-ipsum.vercel.app](https://img.shields.io/website-up-down-green-red/https/naereen.github.io.svg)](https://chinese-lorem-ipsum.vercel.app/) [![GitHub license](https://badgen.net/github/license/Naereen/Strapdown.js)](https://github.com/SunnyCloudYang/Chinese-lorem-ipsum/blob/main/LICENSE) [![API](https://img.shields.io/badge/API-Free-darkgreen)](https://github.com/SunnyCloudYang/Chinese-lorem-ipsum/blob/main/website/api/apidoc.md)
 
 ## Description
 
-This project generates random text based on real world frequency table of Chinese characters. It reads character frequencies from a file and uses them to generate random sentences.
+This project generates random text(lorem ipsum) based on **real world frequency** of Chinese characters. It reads character frequencies from a file and uses them to generate random sentences.
 
 By default, it generates a random text with 3\~5 paragraphs, 4\~8 sentences per paragraph, and no more than 20 characters per sentence, which is about 300 characters.
+
+But you can easily customize the number of paragraphs, sentences per paragraph, and characters per sentence by passing a different parameter. Besides, it's also available to generate a random text with a specific number of characters.
 
 ## Website
 
 [Chinese Lorem Ipsum Generator](https://chinese-lorem-ipsum.vercel.app/)
+
+## API
+
+[API Documentation](https://github.com/SunnyCloudYang/Chinese-lorem-ipsum/blob/main/website/api/apidoc.md)
+
+## Project Structure
+
+```plaintext
+Chinese-lorem-ipsum/
+├── website/                  # Website
+│   ├── api/                  # Backend API
+│   │   ├── apidoc.md         # API Documentation
+│   │   └── app.py            # flask app
+│   ├── index.html            # Homepage
+│   └── ...                   # Other website files
+├── data/                     # Data source
+│   ├── word_freq.txt         # Word frequency (generated during preprocessing)
+│   ├── char_freq.txt         # Character frequency (generated during preprocessing)
+│   ├── 现代汉语语料库词频表    # Word frequency
+│   └── 现代汉语语料库字频表    # Character frequency
+├── train/                    # Test version using Markov model
+│   ├── clean_corpus.py       # Script to clean the corpus
+│   └── model.py              # Markov model
+├── model/                    # Markov model file
+│   └── model.json            # Markov model
+├── lorem_ipsum.py            # Script to generate random text
+├── preprocess.py             # Script to preprocess the frequency table
+└── ...                       # Other files
+```
 
 ## Installation
 

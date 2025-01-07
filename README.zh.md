@@ -1,16 +1,47 @@
 # 中文假字生成器
 
-[![Website chinese-lorem-ipsum.vercel.app](https://img.shields.io/website-up-down-green-red/https/naereen.github.io.svg)](https://chinese-lorem-ipsum.vercel.app/) [![GitHub license](https://badgen.net/github/license/Naereen/Strapdown.js)](https://github.com/SunnyCloudYang/Chinese-lorem-ipsum/blob/main/LICENSE)
+[![Website chinese-lorem-ipsum.vercel.app](https://img.shields.io/website-up-down-green-red/https/naereen.github.io.svg)](https://chinese-lorem-ipsum.vercel.app/) [![GitHub license](https://badgen.net/github/license/Naereen/Strapdown.js)](https://github.com/SunnyCloudYang/Chinese-lorem-ipsum/blob/main/LICENSE) [![API](https://img.shields.io/badge/API-Free-darkgreen)](https://github.com/SunnyCloudYang/Chinese-lorem-ipsum/blob/main/website/api/apidoc.md)
 
 ## 描述
 
-该项目基于真实世界的中文字符频率表生成随机文本。它从文件中读取词语频率，并按照词频生成随机句子。
+该项目基于**真实世界的中文字符频率**生成随机文本（乱数假文）。它从现代汉语语料库词频表中读取词语频率，并按照词频生成随机句子。
 
 默认情况下，它会生成包含 3\~5 段，每段 4\~8 句，每句不超过20个字的随机文本，大约300字。
+
+但是你可以通过传递不同的参数轻松自定义段落数、每段句子数和每句字数。此外还可以生成指定字数的随机文本。
 
 ## 网站
 
 [中文假字生成器](https://chinese-lorem-ipsum.vercel.app/)
+
+## API
+
+[API 文档](https://github.com/SunnyCloudYang/Chinese-lorem-ipsum/blob/main/website/api/apidoc.md)
+
+## 项目结构
+
+```plaintext
+Chinese-lorem-ipsum/
+├── website/                  # 网站
+│   ├── api/                  # 后端 API
+│   │   ├── apidoc.md         # API 文档
+│   │   └── app.py            # flask app
+│   ├── index.html            # 主页
+│   └── ...                   # 其他网站文件
+├── data/                     # 数据源
+│   ├── word_freq.txt         # 词频表（预处理时生成）
+│   ├── char_freq.txt         # 字频表（预处理时生成）
+│   ├── 现代汉语语料库词频表    # 词频表
+│   └── 现代汉语语料库字频表    # 字频表
+├── train/                    # 使用了Markov模型的测试版本
+│   ├── clean_corpus.py       # 清理语料库的脚本
+│   └── model.py              # Markov模型
+├── model/                    # Markov模型文件
+│   └── model.json            # Markov模型
+├── lorem_ipsum.py            # 生成随机文本的脚本
+├── preprocess.py             # 预处理词频表的脚本
+└── ...                       # 其他文件
+```
 
 ## 安装
 
