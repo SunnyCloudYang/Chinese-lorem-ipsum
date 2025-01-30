@@ -34,6 +34,7 @@ body.dark-theme {
 .container {
     max-width: 700px;
     margin: 80px auto;
+    margin-bottom: max(16px, calc(100vh - 80px - 800px - 48px));
     background-color: #ffffff;
     padding: 36px;
     border-radius: 16px;
@@ -46,6 +47,7 @@ body.dark-theme {
     .container {
         margin: 16px;
         padding: 28px;
+        margin-bottom: max(16px, min(3vw, calc(100vh - 80px - 800px - 48px)));
         width: calc(100% - 32px);
     }
 }
@@ -314,7 +316,7 @@ div.or-seperator::before, div.or-seperator::after {
     margin: 0 10px;
 }
 
-div.pv-container {
+.pv-container {
     margin-bottom: 8px;
     text-align: center;
 }
