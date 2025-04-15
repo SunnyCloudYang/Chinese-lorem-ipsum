@@ -1,9 +1,11 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 import random
 import requests
 
 # Initialize Flask app and enable CORS
 app = Flask(__name__)
+CORS(app, resources={r"/api/*": {"origins": "*"}})
 
 # Load the character frequency data
 char_frequency = {}
@@ -116,14 +118,14 @@ def home():
 
 @app.route("/api/generate/", methods=["GET"])
 def generate_default_text_endpoint():
-    update_stats(request.referrer, "api/generate/")
+    update_stats(request.host_url, "api/generate/")
     generated_text = generate_text()
     return jsonify({"loremText": generated_text})
 
 
 @app.route("/api/generate/<int:length>/", methods=["GET"])
 def generate_chars(length):
-    update_stats(request.referrer, f"api/generate/{length}/")
+    update_stats(request.host_url, f"api/generate/{length}/")
     length = min(length, 10000)
     length = max(length, 1)
     num_sentences = length // 16
@@ -140,7 +142,7 @@ def generate_chars(length):
 
 @app.route("/api/generate/<string:len_type>/", methods=["GET"])
 def generate_chars_by_type(len_type):
-    update_stats(request.referrer, f"api/generate/{len_type}/")
+    update_stats(request.host_url, f"api/generate/{len_type}/")
     if len_type == "tiny":
         length = random.randint(2, 10)
     elif len_type == "small":
@@ -158,7 +160,7 @@ def generate_chars_by_type(len_type):
 
 @app.route("/api/generate/", methods=["POST"])
 def generate_text_endpoint():
-    update_stats(request.referrer, "api/generate/custom/")
+    update_stats(request.host_url, "api/generate/custom/")
     data = request.json
     num_paragraphs_range = data.get("num_paragraphs_range", [3, 5])
     num_sentences_range = data.get("num_sentences_range", [4, 8])
