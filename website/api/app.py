@@ -19,29 +19,36 @@ with open("./api/word_freq.txt", "r", encoding="utf-8") as f:
         probs.append(float(freq))
 
 
-def update_stats(path):
+def update_stats(origin, path):
     # fetch script from vercount with referer of path
+    origin = origin or "https://chinese-lorem-ipsum.vercel.app"
+    origin = origin[:-1] if origin.endswith("/") else origin
     try:
         headers = {
-            "Referer": f"https://chinese-lorem-ipsum.vercel.app/{path}",
+            "Referer": f"{origin}/",
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36",
+            "X-Browser-Token": "l4jdmo",
+            "Host": "events.vercount.one",
+            "Origin": origin,
+            "Content-Type": "application/json",
         }
         requests.post(
-            "https://events.vercount.one/log",
+            "https://events.vercount.one/api/v2/log",
             headers=headers,
-            data={
-                "url": f"https://chinese-lorem-ipsum.vercel.app/{path}",
+            json={
+                "url": f"{origin}/{path}",
                 "token": "l4jdmo",
             },
         )
-        requests.post(
-            "https://events.vercount.one/log",
+        res = requests.post(
+            "https://events.vercount.one/api/v2/log",
             headers=headers,
-            data={
-                "url": "https://chinese-lorem-ipsum.vercel.app/api/",
+            json={
+                "url": f"{origin}/api/",
                 "token": "l4jdmo",
             },
         )
+        res.status_code != 200 and print(res.status_code, res.text)
     except Exception as e:
         print(f"Error updating stats: {e}")
 
@@ -109,14 +116,14 @@ def home():
 
 @app.route("/api/generate/", methods=["GET"])
 def generate_default_text_endpoint():
-    update_stats("api/generate/")
+    update_stats(request.referrer, "api/generate/")
     generated_text = generate_text()
     return jsonify({"loremText": generated_text})
 
 
 @app.route("/api/generate/<int:length>/", methods=["GET"])
 def generate_chars(length):
-    update_stats(f"api/generate/{length}/")
+    update_stats(request.referrer, f"api/generate/{length}/")
     length = min(length, 10000)
     length = max(length, 1)
     num_sentences = length // 16
@@ -133,7 +140,7 @@ def generate_chars(length):
 
 @app.route("/api/generate/<string:len_type>/", methods=["GET"])
 def generate_chars_by_type(len_type):
-    update_stats(f"api/generate/{len_type}/")
+    update_stats(request.referrer, f"api/generate/{len_type}/")
     if len_type == "tiny":
         length = random.randint(2, 10)
     elif len_type == "small":
@@ -151,7 +158,7 @@ def generate_chars_by_type(len_type):
 
 @app.route("/api/generate/", methods=["POST"])
 def generate_text_endpoint():
-    update_stats("api/generate/custom/")
+    update_stats(request.referrer, "api/generate/custom/")
     data = request.json
     num_paragraphs_range = data.get("num_paragraphs_range", [3, 5])
     num_sentences_range = data.get("num_sentences_range", [4, 8])
